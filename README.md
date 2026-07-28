@@ -2,17 +2,17 @@
 
 Atomic authority package for `random/bytes`.
 
-- imports: `#{:random-bytes}`
-- effects: `#{:randomness}`
-- default policy: `:autonomous`
+- provider status: **reference-implemented**
 - semantic definition CID: `bafyreidauidawvzfmrbe2wi2dn62flk2sejjpfp6omszbvhwjqfeslk7ai`
-- hash contract CID: `bafkreiflhj3fslsbh7okdas2fzlhmogai64x6p3lkla6gtr7berbp7ftvi`
-- provider status: `contract-only`
+- artifact: `artifacts/provider.core.wasm` (sha256 `59535aedb5f325d33fa0e86da8a6368d440fffb447f14a48a876ee7f565cbd8e`)
+- JVM reference: `kotoba.capability.random.bytes.provider`
+- host ABI: module `kotoba`, field `random_bytes`, `(ptr, len) → i32`
 
-The repository name is a discovery alias. The semantic definition CID
-is the immutable import identity. Importing it does not grant runtime
-authority: Tamaki must request it explicitly and Kototama must admit
-the sealed envelope.
+Definition CID is unchanged. `:signature :reference-unsigned`.
+
+Core wasm fills guest memory with a tiny xorshift32 stream (non-crypto
+packaging reference). JVM `random-bytes` uses `SecureRandom` for host
+semantics. Production hosts should inject OS CSPRNG into linear memory.
 
 ```sh
 clojure -M:test
