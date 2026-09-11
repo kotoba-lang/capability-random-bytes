@@ -15,5 +15,5 @@ packaging reference). JVM `random-bytes` uses `SecureRandom` for host
 semantics. Production hosts should inject OS CSPRNG into linear memory.
 
 ```sh
-clojure -M:test
+kbb -M:test
 ```
